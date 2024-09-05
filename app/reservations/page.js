@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "reservations",
+};
+
 export default function Page() {
   return (
     <div>
