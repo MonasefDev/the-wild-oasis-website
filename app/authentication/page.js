@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "authentication",
+};
+
 export default function Page() {
   return (
     <div>
