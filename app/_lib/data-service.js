@@ -220,7 +220,7 @@ export async function updateBooking(id, updatedFields) {
   return data;
 }
 
-/////////////
+////////////////////////////////////////////////////////////////////
 // DELETE
 
 export async function deleteBooking(id) {
