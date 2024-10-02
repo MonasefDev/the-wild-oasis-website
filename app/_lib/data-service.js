@@ -1,7 +1,6 @@
-import { eachDayOfInterval } from "date-fns";
-
-import { supabase } from "./supabase";
 import { notFound } from "next/navigation";
+import { eachDayOfInterval } from "date-fns";
+import { supabase } from "./supabase";
 
 /////////////
 // GET
@@ -13,8 +12,8 @@ export async function getCabin(id) {
     .eq("id", id)
     .single();
 
-  //! For testing
-  await new Promise((res) => setTimeout(res, 2000));
+  // For testing
+  // await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
     console.error(error);
@@ -43,6 +42,9 @@ export const getCabins = async function () {
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
+
+  // For testing
+  // await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
     console.error(error);
@@ -109,9 +111,6 @@ export async function getBookedDatesByCabinId(cabinId) {
     .eq("cabinId", cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
 
-  //! For testing
-  await new Promise((res) => setTimeout(res, 3000));
-
   if (error) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
@@ -133,8 +132,7 @@ export async function getBookedDatesByCabinId(cabinId) {
 export async function getSettings() {
   const { data, error } = await supabase.from("settings").select("*").single();
 
-  // //! For testing
-  // await new Promise((res) => setTimeout(res, 4000));
+  // await new Promise((res) => setTimeout(res, 5000));
 
   if (error) {
     console.error(error);
@@ -169,7 +167,7 @@ export async function createGuest(newGuest) {
 
   return data;
 }
-
+/*
 export async function createBooking(newBooking) {
   const { data, error } = await supabase
     .from("bookings")
@@ -185,10 +183,11 @@ export async function createBooking(newBooking) {
 
   return data;
 }
-
+*/
 /////////////
 // UPDATE
 
+/*
 // The updatedFields is an object which should ONLY contain the updated data
 export async function updateGuest(id, updatedFields) {
   const { data, error } = await supabase
@@ -220,7 +219,7 @@ export async function updateBooking(id, updatedFields) {
   return data;
 }
 
-////////////////////////////////////////////////////////////////////
+/////////////
 // DELETE
 
 export async function deleteBooking(id) {
@@ -232,3 +231,4 @@ export async function deleteBooking(id) {
   }
   return data;
 }
+*/
