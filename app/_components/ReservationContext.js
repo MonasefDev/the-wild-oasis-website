@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { createContext, useContext } from "react";
+
+import { createContext, useContext, useState } from "react";
 
 const ReservationContext = createContext();
 
@@ -8,10 +8,8 @@ const initialState = { from: undefined, to: undefined };
 
 function ReservationProvider({ children }) {
   const [range, setRange] = useState(initialState);
+  const resetRange = () => setRange(initialState);
 
-  const resetRange = () => {
-    setRange(initialState);
-  };
   return (
     <ReservationContext.Provider value={{ range, setRange, resetRange }}>
       {children}
@@ -19,12 +17,11 @@ function ReservationProvider({ children }) {
   );
 }
 
-const useReservation = () => {
+function useReservation() {
   const context = useContext(ReservationContext);
-  if (context === undefined) {
-    throw new Error("useReservation must be used within a ReservationProvider");
-  }
+  if (context === undefined)
+    throw new Error("Context was used outside provider");
   return context;
-};
+}
 
 export { ReservationProvider, useReservation };

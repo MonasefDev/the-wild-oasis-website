@@ -1,16 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
-import bgImg from "@/public/bg.png";
+import Image from "next/image";
+import bg from "@/public/bg.png";
 
 export default function Page() {
   return (
-    <div className="mt-24">
+    <main className="mt-24">
       <Image
-        src={bgImg}
+        src={bg}
         fill
-        className="object-cover object-top"
         placeholder="blur"
-        quality={60}
+        quality={80}
+        className="object-cover object-top"
         alt="Mountains and forests with two cabins"
       />
 
@@ -25,6 +25,6 @@ export default function Page() {
           Explore luxury cabins
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
